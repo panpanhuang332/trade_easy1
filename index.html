@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>航運公司在海運途中倒閉 ｜ 國貿物流互動教室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700;900&family=Spline+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a2236;
+    --navy-2:#10324c;
+    --ink:#16384f;
+    --sea:#1f6f8b;
+    --steel:#5a7d92;
+    --paper:#f3ecdf;
+    --paper-2:#ece2cf;
+    --cream:#faf5ea;
+    --coral:#d8503f;
+    --coral-soft:#e8847a;
+    --brass:#bf943f;
+    --gold-soft:#e6cf94;
+    --line:#c9bca0;
+    --good:#2f7d56;
+    --shadow:rgba(10,34,54,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans TC",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+  /* ====== HEADER ====== */
+  header{
+    background:
+      radial-gradient(120% 90% at 80% -10%, rgba(191,148,63,.28), transparent 55%),
+      linear-gradient(160deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:var(--cream);
+    padding:64px 0 78px;
+    position:relative;overflow:hidden;
+  }
+  header::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:46px;
+    background:var(--paper);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='46' viewBox='0 0 120 46'%3E%3Cpath d='M0 46 V20 Q30 0 60 20 T120 20 V46 Z' fill='%23000'/%3E%3C/svg%3E") repeat-x bottom/120px 46px;
+            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='46' viewBox='0 0 120 46'%3E%3Cpath d='M0 46 V20 Q30 0 60 20 T120 20 V46 Z' fill='%23000'/%3E%3C/svg%3E") repeat-x bottom/120px 46px;
+  }
+  .compass{
+    position:absolute;right:-40px;top:-30px;width:230px;height:230px;opacity:.13;
+    animation:spin 80s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .series-tag{
+    font-family:"Spline Sans Mono",monospace;font-size:.72rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .series-tag::before{content:"";width:34px;height:1px;background:var(--brass)}
+  h1{
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:clamp(2.1rem,7vw,3.4rem);line-height:1.18;letter-spacing:.01em;
+    margin-bottom:18px;
+  }
+  h1 .u{
+    background:linear-gradient(transparent 62%, rgba(216,80,63,.55) 62%);
+    padding:0 .05em;
+  }
+  .lede{max-width:620px;font-weight:300;font-size:1.06rem;color:#d8e2e9}
+  .case-chip{
+    display:inline-flex;align-items:center;gap:10px;margin-top:26px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(230,207,148,.4);
+    padding:8px 16px;border-radius:40px;font-size:.86rem;
+  }
+  .case-chip b{font-family:"Fraunces",serif;font-weight:600;color:var(--gold-soft)}
+
+  /* ====== SECTION FRAME ====== */
+  section{padding:52px 0 14px;position:relative}
+  .kicker{
+    font-family:"Spline Sans Mono",monospace;font-size:.74rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--coral);margin-bottom:10px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .kicker .num{
+    font-family:"Fraunces",serif;font-style:italic;font-size:1.5rem;
+    color:var(--brass);line-height:1;letter-spacing:0;
+  }
+  h2{
+    font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(1.5rem,4.5vw,2rem);line-height:1.35;color:var(--navy);
+    margin-bottom:22px;
+  }
+  p.body{margin-bottom:16px}
+  .hl{color:var(--coral);font-weight:700}
+  .em{color:var(--sea);font-weight:500}
+
+  /* ====== CASE FACTS ====== */
+  .facts{
+    background:var(--cream);border:1px solid var(--line);
+    border-left:5px solid var(--coral);border-radius:4px;
+    padding:26px 28px;margin:8px 0 6px;box-shadow:0 10px 30px -18px var(--shadow);
+  }
+  .facts li{list-style:none;padding:14px 0 14px 40px;position:relative;border-bottom:1px dashed var(--line)}
+  .facts li:last-child{border-bottom:none}
+  .facts li .mk{
+    position:absolute;left:0;top:13px;width:26px;height:26px;border-radius:50%;
+    background:var(--navy);color:var(--gold-soft);display:grid;place-items:center;
+    font-family:"Fraunces",serif;font-size:.8rem;font-weight:600;
+  }
+  .facts .date{font-family:"Spline Sans Mono",monospace;color:var(--sea);font-weight:600}
+
+  /* ====== PARTY CARDS ====== */
+  .hint{font-size:.85rem;color:var(--steel);margin-bottom:18px;font-style:italic}
+  .parties{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .party{
+    background:var(--cream);border:1px solid var(--line);border-radius:8px;
+    padding:20px 16px;cursor:pointer;text-align:center;position:relative;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s;
+    overflow:hidden;
+  }
+  .party:hover{transform:translateY(-4px);box-shadow:0 16px 34px -20px var(--shadow);border-color:var(--brass)}
+  .party .ic{font-size:1.9rem;margin-bottom:8px;display:block}
+  .party h3{font-family:"Noto Serif TC",serif;font-size:1.05rem;color:var(--navy);margin-bottom:4px}
+  .party .role{font-size:.78rem;color:var(--steel)}
+  .party .detail{
+    max-height:0;opacity:0;transition:max-height .4s ease,opacity .3s ease,margin .3s;
+    font-size:.84rem;text-align:left;line-height:1.7;color:var(--ink);margin-top:0;
+  }
+  .party.open .detail{max-height:240px;opacity:1;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+  .party .tap{font-size:.7rem;color:var(--brass);font-family:"Spline Sans Mono",monospace;margin-top:10px;letter-spacing:.1em}
+  .party.open .tap{display:none}
+
+  /* ====== KEY INSIGHT ====== */
+  .key{
+    margin-top:34px;background:linear-gradient(155deg,var(--navy),var(--navy-2));
+    color:var(--cream);border-radius:10px;padding:30px 30px 32px;position:relative;
+    box-shadow:0 20px 44px -24px rgba(10,34,54,.7);overflow:hidden;
+  }
+  .key::before{
+    content:"⚓";position:absolute;right:18px;bottom:-12px;font-size:6rem;opacity:.08;
+  }
+  .key .lab{font-family:"Spline Sans Mono",monospace;font-size:.72rem;letter-spacing:.26em;color:var(--gold-soft);text-transform:uppercase;margin-bottom:12px}
+  .key p{font-size:1.18rem;font-family:"Noto Serif TC",serif;line-height:1.7;font-weight:500}
+  .key p .big{color:var(--gold-soft);font-weight:700}
+
+  /* ====== TABS (法源) ====== */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0;position:relative;z-index:2}
+  .tab{
+    font-family:"Noto Sans TC",sans-serif;font-weight:500;font-size:.92rem;
+    border:1px solid var(--line);border-bottom:none;background:var(--paper-2);
+    color:var(--steel);padding:12px 18px;border-radius:8px 8px 0 0;cursor:pointer;
+    transition:all .2s;
+  }
+  .tab .code{font-family:"Spline Sans Mono",monospace;font-size:.7rem;display:block;color:var(--brass);letter-spacing:.05em}
+  .tab:hover{color:var(--navy)}
+  .tab.active{background:var(--cream);color:var(--navy);border-color:var(--brass);transform:translateY(1px)}
+  .panel{
+    background:var(--cream);border:1px solid var(--brass);border-radius:0 8px 8px 8px;
+    padding:28px 28px;display:none;animation:fade .4s ease;
+  }
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .panel h3{font-family:"Noto Serif TC",serif;color:var(--navy);font-size:1.2rem;margin-bottom:6px}
+  .panel .src{font-family:"Spline Sans Mono",monospace;font-size:.74rem;color:var(--coral);margin-bottom:16px;letter-spacing:.04em}
+  .panel p{margin-bottom:12px;font-size:.97rem}
+  .verdict{
+    margin-top:14px;padding:14px 16px;border-radius:6px;font-size:.92rem;
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .verdict.win{background:rgba(47,125,86,.1);border:1px solid rgba(47,125,86,.35)}
+  .verdict.lose{background:rgba(216,80,63,.1);border:1px solid rgba(216,80,63,.35)}
+  .verdict .vt{font-weight:700;white-space:nowrap}
+  .verdict.win .vt{color:var(--good)}
+  .verdict.lose .vt{color:var(--coral)}
+
+  /* ====== GAP ====== */
+  .gap-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin-top:8px}
+  .gap-box{
+    background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:22px 20px;text-align:center;
+  }
+  .gap-box .t{font-family:"Spline Sans Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+  .gap-box.right .t{color:var(--good)}
+  .gap-box.fact .t{color:var(--coral)}
+  .gap-box .ic{font-size:2rem;display:block;margin-bottom:8px}
+  .gap-box h4{font-family:"Noto Serif TC",serif;font-size:1.1rem;color:var(--navy);margin-bottom:4px}
+  .gap-box p{font-size:.83rem;color:var(--steel)}
+  .gap-vs{
+    font-family:"Fraunces",serif;font-style:italic;font-size:1.5rem;color:var(--brass);
+    width:52px;height:52px;border:2px dashed var(--brass);border-radius:50%;display:grid;place-items:center;
+  }
+  .gap-note{margin-top:18px;font-size:.95rem}
+
+  /* ====== SOLUTIONS ====== */
+  .steps{counter-reset:s;margin-top:6px}
+  .step{
+    background:var(--cream);border:1px solid var(--line);border-radius:8px;
+    margin-bottom:12px;padding:18px 20px 18px 22px;position:relative;cursor:pointer;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .step:hover{border-color:var(--brass);box-shadow:0 12px 28px -22px var(--shadow)}
+  .step .head{display:flex;align-items:center;gap:16px}
+  .step .n{
+    counter-increment:s;flex:none;width:40px;height:40px;border-radius:50%;
+    background:var(--navy);color:var(--gold-soft);display:grid;place-items:center;
+    font-family:"Fraunces",serif;font-weight:600;font-size:1.1rem;
+  }
+  .step .n::before{content:counter(s)}
+  .step .ttl{font-family:"Noto Serif TC",serif;font-size:1.06rem;color:var(--navy);flex:1}
+  .step .chev{color:var(--brass);transition:transform .3s;font-size:1.1rem}
+  .step.open .chev{transform:rotate(90deg)}
+  .step .more{max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .3s,margin .3s}
+  .step.open .more{max-height:200px;opacity:1;margin-top:14px}
+  .step .more p{font-size:.9rem;color:var(--ink);padding-left:56px}
+  .recommend{
+    margin-top:24px;background:rgba(191,148,63,.12);border:1px dashed var(--brass);
+    border-radius:8px;padding:18px 22px;font-size:.95rem;
+  }
+  .recommend b{color:var(--coral)}
+
+  /* ====== QUIZ ====== */
+  .quiz{background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:26px 26px;box-shadow:0 14px 34px -24px var(--shadow)}
+  .q{margin-bottom:24px}
+  .q:last-child{margin-bottom:0}
+  .q .qt{font-weight:700;color:var(--navy);margin-bottom:12px;font-size:1rem}
+  .q .qt .qn{font-family:"Fraunces",serif;font-style:italic;color:var(--brass);margin-right:8px}
+  .opt{
+    display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);
+    border-radius:7px;padding:11px 16px;margin-bottom:9px;cursor:pointer;font-size:.93rem;
+    font-family:inherit;color:var(--ink);transition:all .18s;
+  }
+  .opt:hover{border-color:var(--brass);background:var(--paper-2)}
+  .opt.correct{background:rgba(47,125,86,.14);border-color:var(--good);color:var(--good);font-weight:500}
+  .opt.wrong{background:rgba(216,80,63,.12);border-color:var(--coral);color:var(--coral)}
+  .opt:disabled{cursor:default}
+  .fb{margin-top:8px;font-size:.86rem;padding:10px 14px;border-radius:6px;display:none}
+  .fb.show{display:block}
+  .fb.ok{background:rgba(47,125,86,.1);color:var(--good)}
+  .fb.no{background:rgba(216,80,63,.1);color:var(--coral)}
+
+  /* ====== FOOTER ====== */
+  footer{
+    background:var(--navy);color:#9fb4c2;margin-top:60px;padding:40px 0 46px;text-align:center;
+    position:relative;
+  }
+  footer .ttl{font-family:"Noto Serif TC",serif;color:var(--cream);font-size:1.05rem;margin-bottom:6px}
+  footer .sub{font-size:.82rem}
+  footer .law{font-family:"Spline Sans Mono",monospace;font-size:.72rem;color:var(--brass);margin-top:18px;letter-spacing:.08em;line-height:2}
+  .disc{font-size:.72rem;color:#6f8493;margin-top:18px;max-width:600px;margin-left:auto;margin-right:auto}
+
+  /* reveal on load */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:640px){
+    .parties{grid-template-columns:1fr;gap:10px}
+    .party{display:flex;align-items:center;gap:14px;text-align:left;padding:16px}
+    .party .ic{margin:0;font-size:1.6rem}
+    .party .head-m{flex:1}
+    .gap-grid{grid-template-columns:1fr;gap:12px}
+    .gap-vs{margin:0 auto;transform:rotate(90deg)}
+    .step .more p{padding-left:0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="compass" viewBox="0 0 100 100" fill="none" stroke="#e6cf94" stroke-width="1">
+    <circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="38"/>
+    <path d="M50 8 L57 50 L50 92 L43 50 Z" fill="#e6cf94" stroke="none"/>
+    <path d="M8 50 L50 43 L92 50 L50 57 Z" fill="#e6cf94" opacity=".5" stroke="none"/>
+    <circle cx="50" cy="50" r="3" fill="#e6cf94" stroke="none"/>
+  </svg>
+  <div class="wrap">
+    <div class="series-tag">國貿物流互動教室 · 海事篇</div>
+    <h1>航運公司在<br><span class="u">海運途中倒閉</span></h1>
+    <p class="lede">當運送人破產、船舶遭扣押、碼頭工人扣貨求償——進口商的貨還拿得回來嗎？一個關於提單物權、破產取回權與留置權的真實海事難題。</p>
+    <div class="case-chip">📦 真實案例：<b>SYMS</b>　山東煙台國際海運　<b>2008.12.02</b></div>
+  </div>
+</header>
+
+<main>
+
+<!-- 案例情境 -->
+<section class="wrap reveal">
+  <div class="kicker"><span class="num">01</span> 案例情境 · The Case</div>
+  <h2>一夜之間，運送人不見了</h2>
+  <p class="body">2008 年金融海嘯衝擊全球航運，多家航商資金斷鏈。本案中，一家航運公司在<span class="em">貨物仍在運送途中</span>突然倒閉，留下進退兩難的進口商與滿港的貨櫃。</p>
+  <ul class="facts">
+    <li><span class="mk">1</span><span class="date">2008.12.02</span>　山東煙台國際海運有限公司（SYMS）遭債主採取法律行動，船舶<span class="hl">就地扣留</span>，涉及多達 <b>18 艘船</b>、不同規格<b>貨櫃 300 個</b>。</li>
+    <li><span class="mk">2</span>碼頭工人於卸貨後，以貨品做<span class="hl">脅持（扣留）</span>，要求委運的<b>進口商</b>負擔此次航運中的吊運、整理、保管費用。</li>
+    <li><span class="mk">3</span>核心提問：<span class="em">依據何法？若無合適法規，進口商如何才能取到貨？</span></li>
+  </ul>
+</section>
+
+<!-- 三方關係 -->
+<section class="wrap reveal">
+  <div class="kicker"><span class="num">02</span> 釐清三方 · Who's Who</div>
+  <h2>先搞清楚：誰對誰負什麼責任</h2>
+  <p class="hint">👆 點一下卡片，看每一方的法律地位</p>
+  <div class="parties">
+    <div class="party" onclick="this.classList.toggle('open')">
+      <div class="head-m"><span class="ic">🏢</span><h3>進口商</h3><div class="role">貨物所有權人</div></div>
+      <div class="detail">持有<b>正本提單（載貨證券）</b>，是貨物真正的所有權人，享有提貨請求權。本案中卻被要求承擔不該由他負擔的費用。</div>
+      <div class="tap">TAP ▸</div>
+    </div>
+    <div class="party" onclick="this.classList.toggle('open')">
+      <div class="head-m"><span class="ic">🚢</span><h3>航商 SYMS</h3><div class="role">運送人（已破產）</div></div>
+      <div class="detail">與進口商簽訂運送契約的<b>運送人</b>，依約應負擔吊運、整理、保管等費用。如今破產、船舶被扣，已無力履約。</div>
+      <div class="tap">TAP ▸</div>
+    </div>
+    <div class="party" onclick="this.classList.toggle('open')">
+      <div class="head-m"><span class="ic">🛠️</span><h3>碼頭工人</h3><div class="role">裝卸／保管業者</div></div>
+      <div class="detail">受<b>航商</b>委託執行裝卸保管，債務人是航商而非進口商。卻以「扣貨」逼進口商付款——找錯了求償對象。</div>
+      <div class="tap">TAP ▸</div>
+    </div>
+  </div>
+
+  <div class="key">
+    <div class="lab">⚓ 全案關鍵觀念</div>
+    <p>貨物<span class="big">從頭到尾都屬於進口商</span>，從來不是航商的財產。<br>破產扣船扣的是「<span class="big">航商的資產（船）</span>」，<br>不該牽連到「<span class="big">別人的貨</span>」。</p>
+  </div>
+</section>
+
+<!-- 依據何法 -->
+<section class="wrap reveal">
+  <div class="kicker"><span class="num">03</span> 依據何法 · Legal Basis</div>
+  <h2>三條法源，三種命運</h2>
+  <p class="body">這題可以從三個方向找法源。前兩條對<span class="em">進口商有利</span>，第三條則拆穿碼頭工人扣貨的破綻。</p>
+  <div class="tabs">
+    <div class="tab active" data-t="0">海商法<span class="code">提單物權效力</span></div>
+    <div class="tab" data-t="1">破產法 §110<span class="code">取回權</span></div>
+    <div class="tab" data-t="2">民法 §928<span class="code">留置權</span></div>
+  </div>
+
+  <div class="panel active" data-p="0">
+    <h3>提單＝物權證券，憑單提貨</h3>
+    <div class="src">依據：海商法（載貨證券效力，準用民法提單規定）</div>
+    <p>載貨證券（提單）兼具<b>收據、運送契約證明、物權證券</b>三重身分。持有正本提單者，即享有對貨物的<b>交付請求權</b>。</p>
+    <p>進口商手上的正本提單，就是他「這批貨是我的、請交給我」最直接的法律依據。</p>
+    <div class="verdict win"><span class="vt">✓ 對進口商有利</span><span>提單在手，提貨權明確。</span></div>
+  </div>
+
+  <div class="panel" data-p="1">
+    <h3>取回權：我的貨不進你的破產財團</h3>
+    <div class="src">依據：破產法第 110 條</div>
+    <p>「<b>不屬於破產人之財產</b>，其權利人得不依破產程序，由破產管理人取回之。」</p>
+    <p>貨物既屬進口商而非航商，就<b>不是破產財團的一部分</b>。進口商可主張取回權，不必排在一般破產債權人後面慢慢等分配。這是進口商<span class="em">最有力</span>的武器。</p>
+    <div class="verdict win"><span class="vt">✓ 對進口商有利</span><span>貨非破產財產，可直接取回。</span></div>
+  </div>
+
+  <div class="panel" data-p="2">
+    <h3>留置權：碼頭工人扣的其實是「別人的貨」</h3>
+    <div class="src">依據：民法第 928 條</div>
+    <p>留置權成立的關鍵：被留置的動產，必須是「<b>債務人</b>」的動產。碼頭工人的債務人是<b>航商</b>，貨卻屬於<b>進口商（第三人）</b>。</p>
+    <p>且第 928 條第 2 項明定：占有之始<b>明知</b>該動產非債務人所有者，<b>不得</b>主張留置權。碼頭工人明知這是進口商的貨——</p>
+    <div class="verdict lose"><span class="vt">✗ 碼頭工人站不住腳</span><span>對第三人之物，留置權難以成立，扣貨於法無據。</span></div>
+  </div>
+</section>
+
+<!-- 法律缺口 -->
+<section class="wrap reveal">
+  <div class="kicker"><span class="num">04</span> 真正的難題 · The Gap</div>
+  <h2>「若無合適法規」的弦外之音</h2>
+  <p class="body">題目特意問「若無合適法規」，是要你看穿一個現實裂縫：<span class="hl">法律上的權利 ≠ 事實上的占有</span>。</p>
+  <div class="gap-grid">
+    <div class="gap-box right">
+      <div class="t">法律上</div><span class="ic">📜</span>
+      <h4>進口商有理</h4><p>提單在手 ＋ 取回權成立</p>
+    </div>
+    <div class="gap-vs">≠</div>
+    <div class="gap-box fact">
+      <div class="t">事實上</div><span class="ic">🔒</span>
+      <h4>貨在別人手裡</h4><p>碼頭工人實際占有貨物</p>
+    </div>
+  </div>
+  <p class="gap-note">走訴訟曠日費時，貨物可能<span class="em">變質</span>，滯港費（demurrage）、倉租也<span class="em">持續累積</span>。更現實的是：港埠營運人往往「<b>未結清港埠費用就不放貨</b>」，不管你法律上對不對。權利贏了，貨卻拿不到，這就是缺口。</p>
+</section>
+
+<!-- 取貨途徑 -->
+<section class="wrap reveal">
+  <div class="kicker"><span class="num">05</span> 進口商怎麼辦 · Get the Goods</div>
+  <h2>五條取貨途徑</h2>
+  <p class="hint">👆 點一下展開每條途徑的做法</p>
+  <div class="steps">
+    <div class="step" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="n"></span><span class="ttl">憑正本提單，主張取回權</span><span class="chev">▸</span></div>
+      <div class="more"><p>向破產管理人與港方正式請求放貨，以提單與取回權作為法律基礎，先把「貨是我的」立場講清楚。</p></div>
+    </div>
+    <div class="step" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="n"></span><span class="ttl">聲請假處分／法院放貨命令</span><span class="chev">▸</span></div>
+      <div class="more"><p>必要時提供擔保金，請法院介入，命令交付貨物，以司法力量突破事實上的占有僵局。</p></div>
+    </div>
+    <div class="step" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="n"></span><span class="ttl">先墊付、保留追償（pay under protest）</span><span class="chev">▸</span></div>
+      <div class="more"><p>若貨物時效性高或滯港費快速累積，先把爭議費用付掉取貨，同時<b>書面保留追償權利</b>，事後向航商破產程序參與分配，或對航商／裝卸業者求償。</p></div>
+    </div>
+    <div class="step" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="n"></span><span class="ttl">貨物保險理賠</span><span class="chev">▸</span></div>
+      <div class="more"><p>檢視保單是否涵蓋運送人破產衍生的額外費用，部分 ICC 條款或附加條款有相關保障。</p></div>
+    </div>
+    <div class="step" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="n"></span><span class="ttl">眾進口商集體協商</span><span class="chev">▸</span></div>
+      <div class="more"><p>300 個貨櫃涉及多家進口商，聯合分攤與談判，可大幅降低個別負擔，也增加對港方的議價籌碼。</p></div>
+    </div>
+  </div>
+  <div class="recommend">
+    💡 <b>實務最常見：</b>多半走第 3 條。算清「墊付費用」與「停滯損失＋訴訟成本」何者較低——通常<b>先把貨救出來再說</b>，這是純粹的商業權衡，不是純法律問題。
+  </div>
+</section>
+
+<!-- 自我檢測 -->
+<section class="wrap reveal">
+  <div class="kicker"><span class="num">06</span> 自我檢測 · Quiz</div>
+  <h2>三題快速驗收</h2>
+  <div class="quiz" id="quiz">
+    <div class="q" data-correct="1">
+      <div class="qt"><span class="qn">Q1</span>運送人破產後，運送途中的貨物在法律上屬於誰？</div>
+      <button class="opt">屬於航商，併入破產財團處理</button>
+      <button class="opt">屬於進口商，不進破產財團</button>
+      <button class="opt">屬於碼頭工人，因其實際占有</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-correct="2">
+      <div class="qt"><span class="qn">Q2</span>碼頭工人對進口商的貨主張「留置權」，問題出在哪？</div>
+      <button class="opt">費用金額算得太高</button>
+      <button class="opt">沒有先通知港務局</button>
+      <button class="opt">被留置物須為「債務人」之物，但貨屬第三人（進口商）</button>
+      <div class="fb"></div>
+    </div>
+    <div class="q" data-correct="0">
+      <div class="qt"><span class="qn">Q3</span>當貨物時效性高、滯港費不斷累積，實務上最常見的處理是？</div>
+      <button class="opt">先墊付費用取貨，再保留權利向破產程序求償</button>
+      <button class="opt">堅持打完官司確定不付才取貨</button>
+      <button class="opt">放棄整批貨物，全額由保險理賠</button>
+      <div class="fb"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ttl">國貿物流互動教室 · 海事篇</div>
+    <div class="sub">運送人破產與貨物扣押 — 提單物權 × 破產取回權 × 留置權</div>
+    <div class="law">海商法 · 破產法 §110 · 民法 §928 · 強制執行法（假處分）· 商港法</div>
+    <p class="disc">本教材為教學討論用途，整理一般法律原則與實務思路，不構成個案法律意見；具體案件請洽專業律師或海事顧問。涉及跨境（如中國）時，另應適用該國海商法與企業破產法。</p>
+  </div>
+</footer>
+
+<script>
+  // Tabs
+  const tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('active'));
+    panels.forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelector('.panel[data-p="'+t.dataset.t+'"]').classList.add('active');
+  }));
+
+  // Quiz
+  document.querySelectorAll('.q').forEach(q=>{
+    const correct=+q.dataset.correct;
+    const opts=q.querySelectorAll('.opt');
+    const fb=q.querySelector('.fb');
+    opts.forEach((o,i)=>o.addEventListener('click',()=>{
+      opts.forEach(x=>x.disabled=true);
+      opts[correct].classList.add('correct');
+      if(i===correct){fb.textContent='✓ 正確！';fb.className='fb show ok';}
+      else{o.classList.add('wrong');fb.textContent='✗ 再想想——正確答案已標示為綠色。';fb.className='fb show no';}
+    }));
+  });
+
+  // Reveal on scroll
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i*0.04)+'s';io.observe(el);});
+</script>
+</body>
+</html>
